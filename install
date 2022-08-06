@@ -1,0 +1,15 @@
+#!/bin/sh
+
+ : '
+ ----------------------------------------------------------------------------
+ ~/install
+ We use wget to download the the binary file from the internet, from a set URL.
+ The binary is granted permission to execute, and is then placed in the 
+ /usr/local/bin directory.
+ ----------------------------------------------------------------------------
+ '
+
+BIN_URL="https://github.com/michalspano/clocrt/raw/main/bin/clocrt"
+wget $BIN_URL
+chmod +x clocrt
+sudo mv clocrt /usr/local/bin/clocrt
