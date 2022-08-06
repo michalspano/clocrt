@@ -13,3 +13,8 @@ BIN_URL="https://github.com/michalspano/clocrt/raw/main/bin/clocrt"
 wget $BIN_URL
 chmod +x clocrt
 sudo mv clocrt /usr/local/bin/clocrt
+
+# complete installtion
+MAGENTA="\033[0;35m"; RESET="\033[0m"; EMOJI="─=≡Σᕕ(⩹ o ⩺)ᕗ"
+printf "${MAGENTA}clocrt${RESET} has been installed successfully "
+printf "\t${MAGENTA}${EMOJI}${RESET}\n"
