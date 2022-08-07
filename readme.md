@@ -97,6 +97,11 @@ SUM:                             3              2              0              7
 ```
 
 Which we transform into a `Markdown` table with `clocrt`:
+
+```sh
+$ clocrt "`cloc ./test`"
+```
+
 ### github.com/AlDanial/cloc v 1.94  T=0.00 s (626.3 files/s, 1878.9 lines/s)
 | Language | files | blank | comment | code |
 | :------: | :---: | :---: | :-----: | :--: |
@@ -104,7 +109,6 @@ Which we transform into a `Markdown` table with `clocrt`:
 | Markdown | 1     | 0     | 0       | 1    |
 | Python   | 1     | 0     | 0       | 1    |
 | SUM:     | 3     | 2     | 0       | 7    |
-___
 
 \*`Markdown` table syntax: [link](https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet#tables)
 
