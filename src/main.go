@@ -1,35 +1,50 @@
 package main
 
 import (
+	"encoding/json"
 	"fmt"
+	"io"
+	"net/http"
 	"os"
 	"os/exec"
 	"strings"
 )
 
 func main() {
-	/*
-		--------------------------------------------------------------------------------
-		Usage with explanation:
-		1. --print | -pr; we print the redefined table to the standard output
-		2. --cell-align=<align> | -ca=<align>; we align the cells in the table
-		  according to the given alignment: left, center, right
-		3. --output-path=<path> | -op=<path>; we save the redefined table to the
-		  an `.md` file at the given path
-		4. --help | -h; we print the usage and exit the program
-		  the help flag is automatically executed if no command-line arguments are given
-		--------------------------------------------------------------------------------
-	*/
-
+	// Uncombinable optional flags: --help, --version
+	// these flags won't execute the program, they only adduce additional information
 	if len(os.Args) == 1 || os.Args[1] == "--help" || os.Args[1] == "-h" {
 		func() {
-			fmt.Println("Usage: clocrt \"`[CLOC-PATTERN]`\" [OPTIONS]")
-			fmt.Println("OPTIONS:\n\t--cell-align|-ca=<align>\t center|c (default), left|l, right|r")
-			fmt.Println("\t--output-path|-op=<path>\t output file path (default: out.md)")
-			fmt.Println("\t--print|-pr\t\t\t print the result to stdout")
-			fmt.Println("BUGS:\n\t Don't forget to quote the pattern per the example: \"`[CLOC-PATTERN]`\"")
+			fmt.Print("NAME\n\tclocrt - count lines of code redefined tables\n\n")
+			fmt.Print("DESCRIPTION\n\tA simple, lightweight CLI tool to transform")
+			fmt.Print(" a cloc output into a Markdown table.\n\n")
+			fmt.Print("USAGE\n\tclocrt \"`[CLOC-PATTERN]`\" [OPTIONS]\n\n")
+			fmt.Print("OPTIONS\n\t--help, -h\t\t\t show the usage\n")
+			fmt.Print("\t--version, -v\t\t\t fetch and display the current version\n\n")
+			fmt.Print("\t--print, -pr\t\t\t print the result to stdout\n")
+			fmt.Print("\t--cell-align|-ca=<align>\t center|c (default), left|l, right|r\n")
+			fmt.Print("\t--output-path|-op=<path>\t output file path (default: out.md)\n")
+			fmt.Print("BUGS\n\t Don't forget to quote the pattern per the example: \"`[CLOC-PATTERN]`\"\n\n")
 		}()
-		os.Exit(1)
+		return
+
+	} else if os.Args[1] == "--version" || os.Args[1] == "-v" {
+		latestVersion := func(FETCH_URL string) string {
+			var tags []map[string]string
+			reponse, _ := http.Get(FETCH_URL)
+			body, err := io.ReadAll(reponse.Body)
+			if err != nil {
+				panic(err)
+			}
+			json.Unmarshal(body, &tags)
+			if len(tags) == 0 {
+				return "unknown"
+			}
+			return tags[0]["name"]
+		}("https://api.github.com/repos/michalspano/clocrt/tags")
+
+		fmt.Printf("clocrt: %s\n", latestVersion)
+		return
 	}
 
 	// create buffers for optional flags and parse them from the command-line per the documentation
@@ -38,6 +53,15 @@ func main() {
 		printOutput, startIter      bool     = false, false
 		cellAlignOption, outputPath string   = "", "out.md"
 	)
+
+	/*
+		--------------------------------------------------------------------------------
+		Combinable (optional) flags - parsed whilst the execution of the program
+		- they directly influence the program's behavior, but they are not required to be given
+		- they can be combined within each other, given at any order.
+		- they cannot be combined with the initial optional flags: --help, --version
+		--------------------------------------------------------------------------------
+	*/
 
 	func() {
 		for _, arg := range args {
