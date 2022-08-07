@@ -93,7 +93,7 @@ SUM:                             3              2              0              7
 ```
 
 Which we transform into a `Markdown` table with `clocrt`:
-### github.com/AlDanial/cloc v 1.94 T=0.00 s (621.0 files/s, 1863.0 lines/s)
+### github.com/AlDanial/cloc v 1.94  T=0.00 s (626.3 files/s, 1878.9 lines/s)
 | Language | files | blank | comment | code |
 | :------: | :---: | :---: | :-----: | :--: |
 | Go       | 1     | 2     | 0       | 5    |
