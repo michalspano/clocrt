@@ -31,7 +31,7 @@
 
 ## Introduction
 
-A simple, lightweight __CLI__ tool to transform a `cloc` output into a `Markdown` table wirtten in `Go`. 
+A simple, lightweight __CLI__ tool to transform a `cloc` output into a `Markdown` table written in `Go`. 
 
 ## Requirements
 

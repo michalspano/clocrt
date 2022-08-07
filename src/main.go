@@ -11,7 +11,7 @@ import (
 )
 
 func main() {
-	// Uncombinable optional flags: --help, --version
+	// Non-combinable optional flags: --help, --version
 	// these flags won't execute the program, they only adduce additional information
 	if len(os.Args) == 1 || os.Args[1] == "--help" || os.Args[1] == "-h" {
 		func() {
@@ -31,8 +31,8 @@ func main() {
 	} else if os.Args[1] == "--version" || os.Args[1] == "-v" {
 		latestVersion := func(FETCH_URL string) string {
 			var tags []map[string]string
-			reponse, _ := http.Get(FETCH_URL)
-			body, err := io.ReadAll(reponse.Body)
+			response, _ := http.Get(FETCH_URL)
+			body, err := io.ReadAll(response.Body)
 			if err != nil {
 				panic(err)
 			}
@@ -80,7 +80,7 @@ func main() {
 		Reading the CLOC-PATTERN from the command-line:
 		1. We split the pattern by the newline character;
 		2. We append the lines, just then the string 'github' is found in the line, then
-		 we chcek if the line is a separator or if empty - we won't append those;
+		 we check if the line is a separator or if empty - we won't append those;
 		 Note: this is just a matter of convention, we can change it to any string that is
 		 found in any of the lines of the CLOC-PATTERN.
 		 - TODO: add more options for the trimming of the CLOC-PATTERN
@@ -119,7 +119,7 @@ func main() {
 		2. We iterate over the CLOC-PATTERN and for each line we check for non-alphanumeric
 		 characters, we append them to a buffer.
 		3. Then, we populate the row with the remaining corresponding numerical values.
-		Note: the reason for the followin - some names from within the CLOC-PATTERN may be
+		Note: the reason for the following - some names from within the CLOC-PATTERN may be
 		 made from more words, therefore being interpreted as separate data fields. We carry
 		 this process to avoid the aforementioned issue.
 		Note2: the first 2 lines needn't be checked.
@@ -198,7 +198,7 @@ func main() {
 		--------------------------------------------------------------------------------
 		Markdown [MD] cell alignment syntax
 		Docs: https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet#tables
-		Note: We add extra whitespaces within the cells of each row for better readability.
+		Note: We add extra white spaces within the cells of each row for better readability.
 		--------------------------------------------------------------------------------
 	*/
 
@@ -239,7 +239,7 @@ func main() {
 	/*
 		--------------------------------------------------------------------------------
 		Print to the standard output if the --print | -p flag is set for brevity, we use
-		the `cat` command to read the output file we won't interate once again over the
+		the `cat` command to read the output file we won't iterate once again over the
 		content of the file in the execution of the program; the `cat` command is a simple
 		and more efficient way to read the content of the file than reading it line by
 		line once again.
