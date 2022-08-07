@@ -66,6 +66,8 @@ $ ./clocrt --version  # validates the installation
 Suppose the following __working tree__ with some _dummy_ files:
 
 ```text
+$ tree ./test
+
 test
 ├── docs
 │   └── foo.md
@@ -76,6 +78,8 @@ test
 Running `cloc` would yield the following output:
 
 ```text
+$ cloc ./test
+
        3 text files.
        3 unique files.                              
        0 files ignored.
