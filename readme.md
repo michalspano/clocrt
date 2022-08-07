@@ -104,7 +104,7 @@ ___
 
 \*`Markdown` table syntax: [link](https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet#tables)
 
-_Voila!_ :confetti:
+_Voila!_ :confetti_ball:
 
 ## Usage
 
