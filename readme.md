@@ -28,6 +28,7 @@
   * [Example](#example)
   * [Usage](#usage)
     * [`cloc` docs](#cloc-docs)
+  * [Contributing](#contributing)
 
 ## Introduction
 
@@ -144,6 +145,11 @@ BUGS
 #### `cloc` docs
 
 Documentation of the `cloc` command-line utility can be found [here](https://github.com/AlDanial/cloc#options-).
+
+## Contributing
+
+I'm open to any contribution to the repository. If you have any suggestions or feedback, please open an issue or pull request. :+1:
+With the respect to the `MIT` License provided within the project: [link](https://github.com/michalspano/clocrt/blob/main/LICENSE).
 
 <!-- GitHub Shields -->
 [contributors-shield]: https://img.shields.io/github/contributors/michalspano/clocrt.svg?style=for-the-badge
